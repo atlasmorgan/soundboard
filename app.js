@@ -65,6 +65,7 @@ const colors = [
 // ----------------------------------------------------------
 const grid        = document.getElementById("sound-grid");
 const stopBtn     = document.getElementById("stop-btn");
+const randomBtn   = document.getElementById("random-btn");
 const nowPlaying  = document.getElementById("now-playing");
 const nowPlayingName = document.getElementById("now-playing-name");
 const prevBtn     = document.getElementById("prev-btn");
@@ -224,6 +225,17 @@ function animateButton(button) {
   // Remove the class after the animation finishes (0.35s)
   setTimeout(() => button.classList.remove("bounce"), 350);
 }
+
+
+// ----------------------------------------------------------
+// STOP ALL SOUNDS BUTTON
+//    Loop through every active Audio object and pause it.
+// ----------------------------------------------------------
+randomBtn.addEventListener("click", () => {
+  const sound = sounds[Math.floor(Math.random() * sounds.length)];
+  playSound(sound, randomBtn);
+  animateButton(randomBtn);
+});
 
 
 // ----------------------------------------------------------

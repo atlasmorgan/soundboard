@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:archive.org)",
+      "WebFetch(domain:soundbible.com)",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "WebFetch(domain:upload.wikimedia.org)",
+      "WebFetch(domain:bigsoundbank.com)",
+      "WebFetch(domain:orangefreesounds.com)",
+      "Bash(cd:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:www.freesoundslibrary.com)",
+      "WebFetch(domain:ia801508.us.archive.org)",
+      "WebFetch(domain:dn710905.ca.archive.org)"
+    ]
+  }
+}
