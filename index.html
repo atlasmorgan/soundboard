@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎵 Meme Soundboard</title>
+
+  <!-- Tailwind CSS (no install needed!) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fun font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+  <style>
+    /* Use the fun font everywhere */
+    body {
+      font-family: 'Fredoka One', cursive;
+    }
+
+    /* Bounce animation when you click a button */
+    @keyframes bounce-click {
+      0%   { transform: scale(1); }
+      30%  { transform: scale(1.15); }
+      60%  { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+
+    /* Glow pulse when a sound is playing */
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4); }
+      50%       { box-shadow: 0 0 20px 6px rgba(255, 255, 255, 0.8); }
+    }
+
+    .bounce {
+      animation: bounce-click 0.35s ease;
+    }
+
+    .playing {
+      animation: glow-pulse 0.8s ease-in-out infinite;
+      outline: 3px solid white;
+    }
+
+    /* Now Playing bar slide-in */
+    @keyframes slide-up {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);   opacity: 1; }
+    }
+
+    .slide-up {
+      animation: slide-up 0.3s ease;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-800 p-6 pb-24">
+
+  <!-- Title -->
+  <header class="text-center mb-8">
+    <h1 class="text-5xl md:text-7xl text-white drop-shadow-lg tracking-wide">
+      🎵 MEME SOUNDBOARD
+    </h1>
+    <p class="text-blue-200 text-lg mt-2">Click a button to play a sound!</p>
+  </header>
+
+  <!-- Stop All Sounds button -->
+  <div class="flex justify-center mb-8">
+    <button
+      id="stop-btn"
+      class="bg-red-500 hover:bg-red-400 active:bg-red-600 text-white text-xl px-8 py-3 rounded-full shadow-lg transition-all duration-150 hover:scale-105 active:scale-95"
+    >
+      🔇 STOP ALL SOUNDS
+    </button>
+  </div>
+
+  <!-- Sound buttons grid — filled by app.js -->
+  <div
+    id="sound-grid"
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+  ></div>
+
+  <!-- Pagination controls -->
+  <div id="pagination" class="flex items-center justify-center gap-6 mt-8">
+    <button
+      id="prev-btn"
+      class="bg-white bg-opacity-20 hover:bg-opacity-30 text-white text-xl font-bold px-6 py-3 rounded-full shadow-lg transition-all duration-150 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+    >
+      ← Prev
+    </button>
+    <span id="page-indicator" class="text-white text-xl font-bold">Page 1 of 2</span>
+    <button
+      id="next-btn"
+      class="bg-white bg-opacity-20 hover:bg-opacity-30 text-white text-xl font-bold px-6 py-3 rounded-full shadow-lg transition-all duration-150 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+    >
+      Next →
+    </button>
+  </div>
+
+  <!-- Now Playing bar (fixed at the bottom) -->
+  <div
+    id="now-playing"
+    class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white text-center py-3 text-xl hidden"
+  >
+    🎶 Now Playing: <span id="now-playing-name">—</span>
+  </div>
+
+  <!-- Load our JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
